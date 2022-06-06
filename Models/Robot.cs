@@ -25,9 +25,8 @@ namespace Models
 
         public override string ToString()
         {
-            return $"ID: { Id }, Name: {Name}, Arms: {Arms[1]}, Legs: {Legs[1]}";
-                     
-                   
+            return $"ID: { Id }, Name: {Name}, Arms: {Arms}, Legs: {Legs[0]}, Torso: {Torso.WaistMeasurements}, Head: {Head}";
+
         }
 
     }

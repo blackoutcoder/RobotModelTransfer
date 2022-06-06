@@ -15,7 +15,7 @@ namespace Services
 
         }
 
-        public void CreateNewRobot()
+        public Robot CreateNewRobot()
         {
             MongoClient client = new MongoClient("mongodb+srv://blackout:karina@cluster1.b9ndq.mongodb.net/?retryWrites=true&w=majority");
             var playlistCollections = client.GetDatabase("Robots").GetCollection<Robot>("RobotDataSheets");
@@ -27,12 +27,14 @@ namespace Services
             robotArms.Add(new Arm("Steel", 5, 5));
             robotArms.Add(new Arm("Steel", 5, 5));
             robotLeg.Add(new Leg("Leather", 3, 7));
+            robotLeg.Add(new Leg("Leather", 3, 7));
             Torso torso = new Torso(2.33m, 3.33m);
             Head head = new Head("Black");
             Robot robot = new Robot(robotName, robotArms, robotLeg, torso, head);
            
             playlistCollections.InsertOne(robot);
             Console.WriteLine(robot.ToString());
+            return robot;
         }
     }
 }

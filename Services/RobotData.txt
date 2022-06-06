@@ -1,0 +1,41 @@
+{
+  "Id": {
+    "Timestamp": 1654546863,
+    "Machine": 478968,
+    "Pid": 10656,
+    "Increment": 14809604,
+    "CreationTime": "2022-06-06T20:21:03Z"
+  },
+  "Name": "Joker",
+  "Arms": [
+    {
+      "Material": "Steel",
+      "NumberOfJoints": 5,
+      "NumberOfFingers": 5
+    },
+    {
+      "Material": "Steel",
+      "NumberOfJoints": 5,
+      "NumberOfFingers": 5
+    }
+  ],
+  "Legs": [
+    {
+      "Material": "Leather",
+      "NumberOfJoints": 3,
+      "SizeOfFoot": 7
+    },
+    {
+      "Material": "Leather",
+      "NumberOfJoints": 3,
+      "SizeOfFoot": 7
+    }
+  ],
+  "Torso": {
+    "ChestMeasurements": 2.33,
+    "WaistMeasurements": 3.33
+  },
+  "Head": {
+    "Color": "Black"
+  }
+}
