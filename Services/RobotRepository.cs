@@ -36,5 +36,12 @@ namespace Services
             Console.WriteLine(robot.ToString());
             return robot;
         }
+
+        public void SaveRobotDataToMongoDB(Robot robot)
+        {
+            MongoClient client = new MongoClient("mongodb+srv://blackout:karina@cluster1.b9ndq.mongodb.net/?retryWrites=true&w=majority");
+            var playlistCollections = client.GetDatabase("Robots").GetCollection<Robot>("RobotDataSheets");
+            playlistCollections.InsertOne(robot);
+        }
     }
 }

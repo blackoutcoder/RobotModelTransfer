@@ -34,5 +34,12 @@ namespace Services
             return robotData;
         }
 
+        public Robot DeserializeDataQuick(string file)
+        {
+            string filepath = @$"C:\Users\romka\source\repos\RobotModelTransfer\Services\{file}";
+            var jsonString = File.ReadAllText(filepath);
+            Robot robotData = JsonSerializer.Deserialize<Robot>(jsonString);
+            return robotData;
+        }
     }
 }

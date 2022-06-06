@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson;
 
 namespace Services
 {
@@ -10,6 +11,7 @@ namespace Services
     {
         public void PrintStartUpMenu()
         {
+            RobotRepository robotRepository = new RobotRepository();
             FileManager fileManager = new FileManager();
 
             Console.Clear();
@@ -21,8 +23,9 @@ namespace Services
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(">Enter a 'file name' to read 'Robot data' and press ENTER...");
             var datafile = Console.ReadLine();
+            
             fileManager.DeserializeDataFile(datafile);
-
+            GOTOHERE:
             Console.WriteLine("Press any key to enter 'Service' menu...");
             Console.ReadLine();
             Console.Clear();
@@ -37,7 +40,58 @@ namespace Services
             Console.WriteLine("4. Find robot data by other parmeters.");
             Console.WriteLine("5. Delete robot data by Id.");
             Console.WriteLine("6. Update robot data.");
-            Console.ReadLine();
+            Console.WriteLine("7. Save any robot data to text file.");
+            Console.WriteLine("8. Exit data manager.");
+            var choise = Convert.ToInt32(Console.ReadLine());
+
+
+            if (choise == 1)
+            {
+                var data = fileManager.DeserializeDataQuick(datafile);
+                robotRepository.SaveRobotDataToMongoDB(data);
+                Console.WriteLine($">Robot data successfully saved to MongoDB database!");
+                Console.WriteLine("");
+                Console.WriteLine(">Press any key to watch robot list...");
+
+                System.Threading.Thread.Sleep(2000);
+                goto GOTOHERE;
+
+            }
+            else if (choise == 2)
+            {
+                
+            }
+            else if (choise == 3)
+            {
+                
+            }
+            else if (choise == 4)
+            {
+                
+            }
+
+            else if (choise == 5)
+            {
+                
+            }
+            else if (choise == 6)
+            {
+
+            } 
+            else if (choise == 7)
+            {
+
+            }
+            else if (choise == 8)
+            {
+
+            }
+            else
+            {
+                Console.WriteLine("Enter a valid number and press ENTER...");
+                System.Threading.Thread.Sleep(2000);
+                goto GOTOHERE;
+            }
         }
     }
 }
