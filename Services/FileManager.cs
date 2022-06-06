@@ -27,6 +27,10 @@ namespace Services
             Console.WriteLine($">Number of legs: {robotData.Legs.Count}. Material: {robotData.Legs[1].Material}, number of joints: {robotData.Legs[1].NumberOfJoints}, size of foot: {robotData.Legs[1].SizeOfFoot} Cm.");
             Console.WriteLine($">Robot torso chest measurements: {robotData.Torso.ChestMeasurements}, waist measurements: {robotData.Torso.WaistMeasurements}");
             Console.WriteLine($">Robot head color: {robotData.Head.Color}");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("");
+            Console.WriteLine("Data file successfully loaded!");
+
             return robotData;
         }
 
