@@ -9,7 +9,7 @@ namespace Models
     public class Head
     {
         public string Color { get; set; }
-        enum HeadType
+        public enum HeadType
         {
             HumanType,
             Android

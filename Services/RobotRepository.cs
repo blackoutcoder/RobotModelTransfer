@@ -10,6 +10,7 @@ namespace Services
 {
     public class RobotRepository
     {
+        
         public RobotRepository()
         {
 
@@ -42,6 +43,47 @@ namespace Services
             MongoClient client = new MongoClient("mongodb+srv://blackout:karina@cluster1.b9ndq.mongodb.net/?retryWrites=true&w=majority");
             var playlistCollections = client.GetDatabase("Robots").GetCollection<Robot>("RobotDataSheets");
             playlistCollections.InsertOne(robot);
+        }
+
+        public List<Robot> GetRobotList()
+        {
+            List<Robot> robotList = new List<Robot>();
+            MongoClient client = new MongoClient("mongodb+srv://blackout:karina@cluster1.b9ndq.mongodb.net/?retryWrites=true&w=majority");
+            var playlistCollections = client.GetDatabase("Robots").GetCollection<Robot>("RobotDataSheets");
+            //robotList = playlistCollections.Indexes.List<Robot>;
+            //foreach (var robot in playlistCollections)
+            //{
+            //    robotList.Add(robot);
+            //}
+            Console.WriteLine(playlistCollections.ToString());
+            return robotList;
+        }
+
+        public void FindRobotDataSheetById()
+        {
+            MongoClient client = new MongoClient("mongodb+srv://blackout:karina@cluster1.b9ndq.mongodb.net/?retryWrites=true&w=majority");
+            var playlistCollections = client.GetDatabase("Robots").GetCollection<Robot>("RobotDataSheets");
+            Console.WriteLine("Enter robot 'id' for search and press ENTER...");
+            var id = Console.ReadLine();
+            var name = Builders<Robot>.Projection;
+            var filter = Builders<Robot>.Filter.Eq("ObjectId", id);
+            var results = playlistCollections.Find(filter);
+            Console.WriteLine(Convert.ToString(results));
+            Console.WriteLine(name);
+            Console.ReadLine();
+        }
+
+        public void FindRobotDataSheetByName()
+        {
+            MongoClient client = new MongoClient("mongodb+srv://blackout:karina@cluster1.b9ndq.mongodb.net/?retryWrites=true&w=majority");
+            var playlistCollections = client.GetDatabase("Robots").GetCollection<Robot>("RobotDataSheets");
+            Console.WriteLine("Enter robot 'name' for search and press ENTER...");
+            var name = Console.ReadLine();
+            var filter = Builders<Robot>.Filter.Eq("Name", name);
+            var results = playlistCollections.Find(filter);
+            Console.WriteLine(Convert.ToString(results));
+            Console.WriteLine(name);
+            Console.ReadLine();
         }
     }
 }

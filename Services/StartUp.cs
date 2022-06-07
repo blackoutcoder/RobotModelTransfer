@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,25 +50,33 @@ namespace Services
             {
                 var data = fileManager.DeserializeDataQuick(datafile);
                 robotRepository.SaveRobotDataToMongoDB(data);
+                Console.ForegroundColor= ConsoleColor.Green;
                 Console.WriteLine($">Robot data successfully saved to MongoDB database!");
                 Console.WriteLine("");
                 Console.WriteLine(">Press any key to watch robot list...");
-
+                robotRepository.GetRobotList();
                 System.Threading.Thread.Sleep(2000);
                 goto GOTOHERE;
 
             }
             else if (choise == 2)
             {
-                
+                robotRepository.GetRobotList();
+                System.Threading.Thread.Sleep(2000);
+                goto GOTOHERE;
+
             }
             else if (choise == 3)
             {
-                
+                robotRepository.FindRobotDataSheetById();
+                System.Threading.Thread.Sleep(2000);
+                goto GOTOHERE;
             }
             else if (choise == 4)
             {
-                
+                robotRepository.FindRobotDataSheetByName();
+                System.Threading.Thread.Sleep(2000);
+                goto GOTOHERE;
             }
 
             else if (choise == 5)
@@ -84,7 +93,18 @@ namespace Services
             }
             else if (choise == 8)
             {
-
+                Console.Clear();
+                Console.WriteLine(">Saving progress...3 ");
+                System.Threading.Thread.Sleep(1500);
+                Console.Clear();
+                Console.WriteLine(">Saving progress...2 ");
+                System.Threading.Thread.Sleep(1500);
+                Console.Clear();
+                Console.WriteLine(">Saving progress...1 ");
+                System.Threading.Thread.Sleep(1500);
+                Console.Clear();
+                
+                Process.GetCurrentProcess().Kill();
             }
             else
             {
